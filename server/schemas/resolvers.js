@@ -9,7 +9,7 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
     Query: {
         me: (parent, { username }) => {
-            return User.findOne({ username }).populate('thoughts');
+            return User.findOne({ username }).populate('User');
         },
     },
 
@@ -39,7 +39,19 @@ const resolvers = {
         },
 
 
-        // saveBook -- Needs to be added still
+        saveBook: async (parent, { bookDetails }, context) => {
+            if (context.user) {
+              const updatedUser = await User.findByIdAndUpdate(
+                { _id: context.user._id },
+                { $push: { savedBooks: bookDetails } },
+                { new: true }
+              );
+      
+              return updatedUser;
+            }
+      
+            throw new AuthenticationError('You need to be logged in!');
+          },
 
         removeBook: async (parent, { user, params }) => {
             return User.findOneAndUpdate(

@@ -9,7 +9,7 @@ import {
 } from 'react-bootstrap';
 
 import Auth from '../utils/auth';
-import { saveBook, searchGoogleBooks } from '../utils/API';
+import { saveBook, searchGoogleBooks } from '../utils/deprecated-API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
 // Importing Apollo features
