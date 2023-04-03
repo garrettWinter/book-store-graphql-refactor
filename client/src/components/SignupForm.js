@@ -15,7 +15,6 @@ const SignupForm = () => {
 
   const [addUser, { error }] = useMutation(ADD_USER);
 
-  //IS THIS NEEDED?
   useEffect(() => {
     if (error) { setShowAlert(true);
     } else { setShowAlert(false);
