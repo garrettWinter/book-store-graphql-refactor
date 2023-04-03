@@ -8,13 +8,13 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        getSingleUser: (parent, { username }) => {
+        me: (parent, { username }) => {
             return User.findOne({ username }).populate('thoughts');
         },
     },
 
     Mutation: {
-        createUser: async (parent, { username, email, password }) => {
+        addUser: async (parent, { username, email, password }) => {
             const user = await User.create({ username, email, password });
             const token = signToken(user);
             return { token, user };
@@ -41,7 +41,7 @@ const resolvers = {
 
         // saveBook -- Needs to be added still
 
-        deleteBook: async (parent, { user, params }) => {
+        removeBook: async (parent, { user, params }) => {
             return User.findOneAndUpdate(
                 { _id: user._id },
                 { $pull: { savedBooks: { bookId: params.bookId } } },
