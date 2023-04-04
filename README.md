@@ -33,7 +33,7 @@ Here are some details on how this application can be used:
   - This website can be accessed by going to: https://book-store-graphql-refactor.herokuapp.com/
       
 Below a screenshot(s) of the application:
-  - ![Book-Store-HomePage](tbd)
+  - ![Book-Store-HomePage](./client/public/assets/images/Book-Store-Home-Page.png)
 
 ## License
 
